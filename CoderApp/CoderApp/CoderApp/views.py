@@ -14,7 +14,7 @@ def registro_usuario(request):
     else:
         form = UsuarioForm()
     
-    return render(request, 'registro_usuario.html', {'form': form})
+    return render(request, 'CoderApp_templates/registro_usuario.html', {'form': form})
 
 def buscar_usuario(request):
     if request.method == 'POST':
@@ -22,8 +22,8 @@ def buscar_usuario(request):
         if form.is_valid():
             nombre_busqueda = form.cleaned_data['nombre_busqueda']
             usuarios = Usuario.objects.filter(nombre__icontains=nombre_busqueda)
-            return render(request, 'buscar_usuario.html', {'form': form, 'usuarios': usuarios})
+            return render(request, 'CoderApp_templates/buscar_usuario.html', {'form': form, 'usuarios': usuarios})
     else:
         form = BusquedaUsuarioForm()
     
-    return render(request, 'buscar_usuario.html', {'form': form})
+    return render(request, 'CoderApp_templates/buscar_usuario.html', {'form': form})
