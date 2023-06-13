@@ -1,0 +1,20 @@
+<!-- buscar_usuario.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Buscar Usuario</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Buscar</button>
+</form>
+{% if usuarios %}
+<h3>Resultados de la búsqueda:</h3>
+<ul>
+  {% for usuario in usuarios %}
+  <li>{{ usuario.nombre }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
