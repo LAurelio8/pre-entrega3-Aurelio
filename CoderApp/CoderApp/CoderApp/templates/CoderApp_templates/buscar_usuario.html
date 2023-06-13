@@ -15,6 +15,7 @@
     {{ form.as_p }}
     <button type="submit">Buscar</button>
   </form>
+  {% csrf_token %}
   {% if usuarios %}
   <h3>Resultados de la búsqueda:</h3>
   <ul>
