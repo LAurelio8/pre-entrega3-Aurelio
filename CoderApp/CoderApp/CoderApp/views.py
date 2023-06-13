@@ -40,15 +40,18 @@ def buscar_usuario(request):
 def inicio_sesion(request):
     if request.method == 'POST':
         nombre = request.POST.get('nombre')
-        contrasena = request.POST.get('contrasena')
+        contraseña = request.POST.get('contrasena')
         
         try:
-            usuario = Usuario.objects.get(nombre=nombre, contrasena=contrasena)
+            usuario = Usuario.objects.get(nombre=nombre, contraseña=contraseña)
             # Realizar acciones necesarias para el inicio de sesión exitoso
-            messages.success(request, 'Inicio de sesión exitoso')
-            return redirect('inicio')  # Redirigir a la página de inicio después del inicio de sesión exitoso
+            messages.success(request, 'Sesión iniciada')
+            # return redirect('inicio')  # Redirigir a la página de inicio después del inicio de sesión exitoso
         except Usuario.DoesNotExist:
             # Usuario no encontrado en la base de datos o credenciales inválidas
-            messages.error(request, 'Nombre de usuario o contraseña incorrectos')
+            messages.error(request, 'El usuario no se encuentra registrado')
     
     return render(request, 'CoderApp_templates/inicio_sesion.html')
+
+
+
